@@ -25,9 +25,11 @@ module.exports = {
         exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           use: [
-            {loader: "css-loader",options: {minimize: true}},
+            {loader: "css-loader",options: {minimize: true,sourceMap: true}},
+            {loader: "sass-loader", options: {
+              sourceMap: true,
+            }},
             {loader: "postcss-loader"},
-            {loader: "sass-loader"}
           ]
         })
       },{
@@ -55,8 +57,7 @@ module.exports = {
     //   name: 'vendor',
     //   minChunks: Infinity,
     // }),
-    // new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
+    
   ],
 }
 
@@ -72,7 +73,7 @@ if (process.env.NODE_ENV === 'production') {
     }),
   ]);
 } else {
-  module.exports.devtool = 'eval';
+  module.exports.devtool = 'source-map';
   // 热加载需要添加的入口
   module.exports.entry = (module.exports.entry || []).concat([
     'webpack/hot/dev-server',
@@ -87,8 +88,12 @@ if (process.env.NODE_ENV === 'production') {
     // hot: true,
     compress: true,
     open: true,
-    host: '0.0.0.0',
-    port: 8080,
+    // host: '0.0.0.0',
+    // port: 8080,
     // noInfo: true,
   }
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+  ])
 }
