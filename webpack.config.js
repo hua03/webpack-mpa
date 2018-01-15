@@ -30,7 +30,8 @@ module.exports = {
               sourceMap: true,
             }},
             {loader: "postcss-loader"},
-          ]
+          ],
+          publicPath: '../'
         })
       },{
         test: /\.js$/,
@@ -39,7 +40,7 @@ module.exports = {
       },{
         test: /\.(png|jpe?g|svg|gif)$/i,
         use: [
-          {loader: 'url-loader',options: {name: "./images/[name].[ext]",limit: 100}}, 
+          {loader: 'url-loader',options: {name: "images/[name].[ext]",limit: 100}}, 
           {loader: "img-loader"}
         ]
       },
@@ -47,11 +48,11 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
-      filename: "./index.html"
+      template: "src/index.html",
+      filename: "index.html"
     }),
     new ExtractTextPlugin({
-      filename: "./css/main.css"
+      filename: "css/main.css"
     }),
     // new webpack.optimize.CommonsChunkPlugin({
     //   name: 'vendor',
@@ -87,7 +88,7 @@ if (process.env.NODE_ENV === 'production') {
     // progress: true,
     // hot: true,
     compress: true,
-    open: true,
+    open: false,
     // host: '0.0.0.0',
     // port: 8080,
     // noInfo: true,
