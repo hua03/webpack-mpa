@@ -1,0 +1,64 @@
+html {
+  font-family: 'Microsoft YaHei', sans-serif;
+  box-sizing: border-box;
+
+  @media screen and(min-width: 480px) {
+    font-size: 18px;
+  }
+  @media screen and(min-width: 540px) {
+    font-size: 20px;
+  }
+}
+
+body {
+  margin: auto;
+  padding: 0;
+  width: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+dl,
+dd,
+li,
+p,
+blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+input,
+textarea,
+button {
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  appearance: none;
+  &:hover,
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  outline: none;
+  // font-size: 100px;
+}
+
+a {
+  text-decoration: none;
+}
